@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persia Pack</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Designed and developed by Sina Hosseini -->
+</head>
+<body class="text-white font-roboto-regular h-screen grid grid-cols-c-8 grid-rows-c-14 text-c tracking-c [word-spacing:.1vw] overflow-hidden">
+  <form action="" class="col-start-1 col-end-11 row-start-1 row-end-4 grid grid-cols-7 grid-rows-4">
+    <div class="col-start-1 col-end-7 row-start-1 row-end-5 grid grid-cols-1 grid-rows-2">
+      <input onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" dir="auto" spellcheck="false" autocomplete="off" id="input" type="text" class="px-c-10 col-start-1 col-end-2 row-start-1 row-end-2 focus:outline-none bg-gray-50 focus:bg-white transition-colors duration-100 placeholder:text-c-gray-20 text-c-gray-20 focus:text-black" placeholder="Input">
+      <input onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" dir="auto" spellcheck="false" autocomplete="off" id="output" type="text" class="px-c-10 col-start-1 col-end-2 row-start-2 row-end-3 focus:outline-none border-t border-c-gray-14 bg-gray-50 focus:bg-white transition-colors duration-100 placeholder:text-c-gray-20 text-c-gray-20 focus:text-black" placeholder="Output">
+    </div>
+    <button id="add-btn" type="submit" class="col-start-7 col-end-8 row-start-1 row-end-5 bg-blue-700 focus:outline-none">
+      <span class="flex justify-center items-center">
+        <svg class="w-1/3 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 16 16"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg>
+      </span>
+    </button>
+  </form>
+
+  <div class="col-start-11 col-end-c-8 row-start-1 row-end-4 grid grid-cols-7 grid-rows-3">
+    <div class="col-start-1 col-end-7 row-start-1 row-end-4 grid grid-cols-1 grid-rows-5">
+      <div class="bg-c-blue-5 col-start-1 col-end-2 row-start-1 row-end-3 flex justify-center items-center">
+        <svg class="fill-white h-c" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 20 20"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></svg>
+      </div>
+      <div class="col-start-1 col-end-2 row-start-3 row-end-6 relative bg-c-yellow-13" id="board-cnt-cnt">
+        <div class="absolute inset-y-0 inset-x-c-10 overflow-hidden" id="board-cnt">
+          <span id="board" class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-black font-bold italic">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-start-7 col-end-8 row-start-1 row-end-4 grid grid-cols-1 grid-rows-2">
+      <button class="col-start-1 col-end-2 row-start-1 row-end-2 flex justify-center items-center bg-black focus:outline-none" onclick="add_message('Persia Pack - v1.0 | Designed and Developed by Sina Hosseini!')">
+        <svg class="fill-white w-1/3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm9 3a1 1 0 11-2 0 1 1 0 012 0zM6.92 6.085c.081-.16.19-.299.34-.398.145-.097.371-.187.74-.187.28 0 .553.087.738.225A.613.613 0 019 6.25c0 .177-.04.264-.077.318a.956.956 0 01-.277.245c-.076.051-.158.1-.258.161l-.007.004a7.728 7.728 0 00-.313.195 2.416 2.416 0 00-.692.661.75.75 0 001.248.832.956.956 0 01.276-.245 6.3 6.3 0 01.26-.16l.006-.004c.093-.057.204-.123.313-.195.222-.149.487-.355.692-.662.214-.32.329-.702.329-1.15 0-.76-.36-1.348-.863-1.725A2.76 2.76 0 008 4c-.631 0-1.155.16-1.572.438-.413.276-.68.638-.849.977a.75.75 0 101.342.67z"></path></svg>
+      </button>
+      <button class="col-start-1 col-end-2 row-start-2 row-end-3 flex justify-center items-center bg-black border-t border-c-gray-17 focus:outline-none" onclick="add_message('Contact: Sina.Hosseini.GST@gmail.com')">
+        <svg class="fill-white w-1/4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="2 2 20 20"><path fill="none" d="M0 0h24v24H0z"></path><path d="M11 14H9a9 9 0 019-9v2c-3.87 0-7 3.13-7 7zm7-3V9c-2.76 0-5 2.24-5 5h2c0-1.66 1.34-3 3-3zM7 4c0-1.11-.89-2-2-2s-2 .89-2 2 .89 2 2 2 2-.89 2-2zm4.45.5h-2A2.99 2.99 0 016.5 7h-3C2.67 7 2 7.67 2 8.5V11h6V8.74a4.97 4.97 0 003.45-4.24zM19 17c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 1h-3a2.99 2.99 0 01-2.95-2.5h-2A4.97 4.97 0 0016 19.74V22h6v-2.5c0-.83-.67-1.5-1.5-1.5z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="col-start-1 col-end-4 row-start-4 row-end-c-14 grid grid-cols-3 grid-rows-c bg-c-gray-2">
+    <div class="col-start-1 col-end-4 row-start-1 row-end-3">
+      <label for="upload-btn" class="w-full h-full cursor-pointer flex justify-center items-center">
+        <span class="w-1/5">
+          <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="4 2 16 20"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"></path></svg>
+        </span>
+        <input type="file" id="upload-btn" class="hidden">
+      </label>
+    </div>
+    <div class="col-start-1 col-end-4 row-start-3 row-end-6 grid grid-cols-3 grid-rows-5 bg-c-gray-3">
+      <div class="border-r border-c-gray-15 col-start-1 col-end-2 row-start-1 row-end-4 flex justify-center items-center">
+        <span class="whitespace-nowrap -rotate-90">File Name</span>
+      </div>
+      <div class="col-start-2 col-end-4 row-start-1 row-end-4 relative">
+        <div class="flex items-center h-full overflow-auto px-c-15">
+          <div class="absolute w-c-15 inset-y-0 left-0 bg-c-gray-3"></div>
+          <div class="whitespace-nowrap flex-1 text-center" id="file-name">Nothing Uploaded Yet...</div>
+          <div class="absolute w-c-15 inset-y-0 right-0 bg-c-gray-3"></div>
+        </div>
+      </div>
+      <div class="border-t border-c-gray-15 col-start-1 col-end-3 row-start-4 row-end-6 relative">
+        <div class="flex items-center h-full overflow-auto px-c-15">
+          <div class="absolute w-c-15 inset-y-0 left-0 bg-c-gray-3"></div>
+          <div class="whitespace-nowrap flex-1 text-center" id="file-format">Nothing Uploaded Yet...</div>
+          <div class="absolute w-c-15 inset-y-0 right-0 bg-c-gray-3"></div>
+        </div>
+      </div>
+      <div class="border-t border-l border-c-gray-15 col-start-3 col-end-4 row-start-4 row-end-6 flex justify-center items-center">
+        <span class="rotate-90">Format</span>
+      </div>
+    </div>
+    <div class="col-start-1 col-end-4 row-start-6 row-end-c">
+      <button id="delete-btn" for="" class="w-full h-full flex justify-center items-center focus:outline-none">
+        <span class="w-1/5">
+          <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="5 3 14 18"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <table class="col-start-4 col-end-11 row-start-4 row-end-c-6 grid grid-cols-3 grid-rows-c-3">
+    <thead class="bg-c-blue-10 col-start-1 col-end-4 row-start-1 row-end-2">
+      <tr class="flex h-full">
+        <th class="w-1/6 flex justify-center items-center font-normal">
+          #
+        </th>
+        <th class="w-1/6 flex justify-center items-center font-normal border-l border-c-green-9">
+          Input
+        </th>
+        <th class="w-1/6 flex justify-center items-center font-normal border-l border-c-green-9">
+          Output
+        </th>
+        <th class="w-3/6 flex justify-center items-center font-normal border-l border-c-green-9">
+          Note
+        </th>
+      </tr>
+    </thead>
+    <tbody class="text-black col-start-1 col-end-4 row-start-2 row-end-c-3 overflow-auto">
+    </tbody>
+  </table>
+
+  <button id="download-btn" class="col-start-11 col-end-c row-start-4 row-end-c-3 bg-c-gray-2 flex justify-center items-center focus:outline-none">
+    <svg class="w-1/4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" color="" viewBox="3 3 18 18"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+  </button>
+
+  <div class="col-start-11 col-end-c row-start-c-3 row-end-c-6 grid grid-cols-4 grid-rows-1 border-r border-c-gray-21">
+    <div class="col-start-1 col-end-2 row-start-1 row-end-2 bg-c-gray-3 flex justify-center items-center">
+      <span class="-rotate-90">Name</span>
+    </div>
+    <div class="col-start-2 col-end-5 row-start-1 row-end-2 relative bg-gray-50 focus-within:bg-white">
+      <div class="absolute inset-x-0 top-0 h-c-14 bg-inherit transition-colors duration-100"></div>
+      <textarea onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" placeholder="Type the Name of Your Table!" class="focus:outline-none resize-none w-full h-full py-c-14 px-c-15 leading-c bg-inherit transition-colors duration-100 placeholder:text-c-gray-20 text-c-gray-20 focus:text-black" spellcheck="false" id="table-name"></textarea>
+      <div class="absolute inset-x-0 bottom-0 h-c-14 bg-inherit transition-colors duration-100"></div>
+    </div>
+  </div>
+
+  <div class="col-start-c col-end-c-8 row-start-4 row-end-c-14 grid grid-cols-12 grid-rows-c-12 text-black">
+    <div class="col-start-1 col-end-11 row-start-1 row-end-c-2 overflow-hidden" id="log-cnt-cnt">
+      <div class="flex h-full border-t border-c-gray-22 w-c-21">
+        <div id="log-cnt" class="bg-c-yellow-11 overflow-auto w-c-19">
+        </div>
+        <button class="bg-c-gray-23 flex justify-center items-center w-c-20 focus:outline-none" id="log-btn">
+          <svg class="fill-c-gray-24 w-1/3" xmlns="http://www.w3.org/2000/svg" viewBox="10 7 5 10"><path d="M10 17l5-5-5-5v10z"></path><path d="M0 24V0h24v24H0z" fill="none"></path></svg>
+        </button>
+        <div class="bg-c-yellow-11 overflow-auto w-c-19" id="log-cnt-2">
+        </div>
+      </div>
+    </div>
+    <div class="col-start-1 col-end-11 row-start-c-2 row-end-c-12 flex border-t border-c-gray-21">
+      <div class="bg-c-yellow-16 overflow-auto w-3/4 border-r border-c-gray-21">
+        <div class="sticky top-0 inset-x-0 bg-c-yellow-16 h-c-18"></div>
+        <div class="mx-c-18 leading-c-2">
+          <i>Table of CONTENT</i>
+          <p class="text-gray-800">A. Farsi/Persian Table --> <a class="hover:text-black transition-colors duration-100" id="download-btn-1" href="css/assets/table/Farsi Chatacter Set.zip" download><i>Download</i></a></p>
+          <p class="text-gray-800">B. English Table --> <a class="hover:text-black transition-colors duration-100" id="download-btn-2" href="css/assets/table/English Character Set.zip" download><i>Download</i></a></p>
+        </div>
+        <div class="sticky bottom-0 bg-c-yellow-16 h-c-18"></div>
+      </div>
+      <div class="bg-c-yellow-15 w-1/4 text-gray-700 overflow-auto">
+        <label class="bg-c-yellow-14 cursor-pointer flex items-center w-full h-c-17 gap-c-16 border-b border-c-gray-21" for="normal-btn">
+          <input class="w-0" type="radio" id="normal-btn">
+          <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center border border-c-gray-21">
+            <span class="w-3/4 h-3/4 bg-c-yellow-17 hidden"></span>
+          </span>
+          <span>
+            Normal
+          </span>
+        </label>
+        <label class="bg-c-yellow-14 cursor-pointer flex items-center w-full h-c-17 gap-c-16 border-b border-c-gray-21" for="farsi-btn">
+          <input class="w-0" type="radio" id="farsi-btn">
+          <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center border border-c-gray-21">
+            <span class="w-3/4 h-3/4 bg-c-yellow-17 hidden"></span>
+          </span>
+          <span>
+            4-Farsi
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="col-start-11 col-end-12 row-start-1 row-end-c-2 flex justify-center items-center bg-gray-300 text-gray-600">
+      <span class="rotate-90">
+        Log
+      </span>
+    </div>
+    <div class="col-start-11 col-end-12 row-start-c-2 row-end-c-12 flex justify-center items-center bg-gray-300 text-gray-600 border-t border-c-gray-18">
+      <span class="rotate-90 whitespace-nowrap">
+        Search Method
+      </span>
+    </div>
+    <div class="col-start-12 col-end-13 row-start-1 row-end-c-12 bg-white flex justify-center items-center">
+      <div class="flex gap-c-14 items-center rotate-90">
+        <div>
+          <svg class="fill-black w-c-10" xmlns="http://www.w3.org/2000/svg" viewBox="3.25 0.79 17.5 22.21"><path fill-rule="evenodd" d="M7.875 2.292a.125.125 0 00-.032.018A7.24 7.24 0 004.75 8.25a7.247 7.247 0 003.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 11-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.747 8.747 0 013.25 8.25a8.74 8.74 0 013.732-7.169 1.547 1.547 0 011.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 00.119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 00.119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 011.708.064 8.74 8.74 0 013.732 7.17 8.747 8.747 0 01-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 11-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0019.25 8.25a7.24 7.24 0 00-3.093-5.94.125.125 0 00-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19a1.75 1.75 0 01-.833 1.49l-2.25 1.385a1.75 1.75 0 01-1.834 0l-2.25-1.384A1.75 1.75 0 018 7.192V2.477c0-.098-.048-.155-.084-.176a.062.062 0 00-.031-.011l-.01.001z"></path></svg>
+        </div>
+        <span class="whitespace-nowrap">
+          Help Center
+        </span>
+      </div>
+    </div>
+  </div>
+    
+  <div class="col-start-4 col-end-c row-start-c-6 row-end-c-14 grid grid-cols-7 grid-rows-c-2">
+    <div class="bg-c-blue-4 col-start-1 col-end-8 row-start-1 row-end-3 grid grid-cols-c-2 grid-rows-2">
+      <label class="cursor-pointer bg-c-blue-4 col-start-1 col-end-7 row-start-1 row-end-2 flex items-center gap-c-16" for="character-btn">
+        <input class="w-0" type="radio" id="character-btn">
+        <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center">
+          <span class="w-3/4 h-3/4 bg-c-blue-4 hidden"></span>
+        </span>
+        <span>
+          Character
+        </span>
+      </label>
+      <label class="cursor-pointer bg-c-blue-4 col-start-1 col-end-7 row-start-2 row-end-3 flex items-center gap-c-16 border-t border-c-blue-14" for="string-btn">
+        <input class="w-0" type="radio" id="string-btn">
+        <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center">
+          <span class="w-3/4 h-3/4 bg-c-blue-4 hidden"></span>
+        </span>
+        <span>
+          String
+        </span>
+      </label>
+      <div class="col-start-7 col-end-8 row-start-1 row-end-3 bg-c-blue-3 flex justify-center items-center">
+        <span class="rotate-90">Type</span>
+      </div>
+      <div class="col-start-8 col-end-9 row-start-1 row-end-3 bg-c-blue-3 flex justify-center items-center border-l border-c-blue-15">
+        <span class="-rotate-90">Tools</span>
+      </div>
+      <input onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" id="splitter" spellcheck="false" autocomplete="off" type="text" class="bg-c-blue-4 col-start-9 col-end-c-2 row-start-1 row-end-2 focus:outline-none text-center px-c-10" placeholder="Splitter">
+      <div class="col-start-9 col-end-c-2 row-start-2 row-end-3 flex border-t border-c-blue-14">
+        <div class="bg-c-blue-4 w-1/3 flex justify-center items-center">
+          Direction
+        </div>
+        <label class="cursor-pointer bg-c-blue-4 w-1/3 flex items-center border-l border-c-blue-14 gap-c-16" for="default-btn">
+          <input class="w-0" type="radio" id="default-btn">
+          <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center">
+            <span class="w-3/4 h-3/4 bg-c-blue-4 hidden"></span>
+          </span>
+          <span>
+            Default
+          </span>
+        </label>
+        <label class="cursor-pointer bg-c-blue-4 w-1/3 flex items-center border-l border-c-blue-14 gap-c-16" for="reverse-btn">
+          <input class="w-0" type="radio" id="reverse-btn">
+          <span class="w-c-11 h-c-11 rounded-c bg-white flex justify-center items-center">
+            <span class="w-3/4 h-3/4 bg-c-blue-4 hidden"></span>
+          </span>
+          <span>
+            Reverse
+          </span>
+        </label>
+      </div>
+    </div>
+    <form action="" class="col-start-1 col-end-5 row-start-3 row-end-c-2 grid grid-cols-4 grid-rows-6">
+      <input onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" dir="auto" id="character-cnt" spellcheck="false" autocomplete="off" type="text" class="transition-colors duration-100 bg-gray-200 focus:bg-white placeholder:text-c-gray-20 text-c-gray-20 focus:text-black col-start-1 col-end-4 row-start-1 row-end-2 focus:outline-none px-c-10" placeholder="Character(s)" readonly>
+      <div class="col-start-1 col-end-4 row-start-2 row-end-7 relative bg-gray-200 focus-within:bg-white border-t border-c-gray-14" id="string-cnt-cnt">
+        <div class="absolute inset-x-0 top-0 h-c-14 bg-inherit transition-colors duration-100"></div>
+        <textarea onkeydown="fix_farsi(this)" onkeyup="fix_farsi_2(this)" spellcheck="false" class="transition-colors duration-100 w-full h-full bg-inherit placeholder:text-c-gray-20 text-c-gray-20 focus:text-black focus:outline-none resize-none py-c-14 px-c-10 leading-c" placeholder="String" id="string-cnt" readonly></textarea>
+        <div class="absolute inset-x-0 bottom-0 h-c-14 bg-inherit transition-colors duration-100"></div>
+      </div>
+      <button id="submit-btn" type="submit" class="col-start-4 col-end-5 row-start-1 row-end-7 bg-c-blue-3 flex justify-center items-center border-t border-c-blue-15 focus:outline-none">
+        <svg class="w-1/3 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="5 4 15 17"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M11 9l1.42 1.42L8.83 14H18V4h2v12H8.83l3.59 3.58L11 21l-6-6 6-6z"></path></svg>
+      </button>
+    </form>
+    <div class="col-start-5 col-end-8 row-start-3 row-end-c-2 grid grid-cols-3 grid-rows-6 text-center border-r border-c-gray-21">
+      <div class="col-start-1 col-end-4 row-start-1 row-end-2 text-black relative">
+        <div class="flex items-center h-full overflow-auto px-c-15">
+          <div class="absolute w-c-15 inset-y-0 left-0 bg-white"></div>
+          <div class="whitespace-pre flex-1 text-center" dir="auto" id="text"></div>
+          <div class="absolute w-c-15 inset-y-0 right-0 bg-white"></div>
+        </div>
+      </div>
+      <ul id="sub-text" class="col-start-1 col-end-4 row-start-2 row-end-6 overflow-auto text-black border-t border-c-gray-25">
+      </ul>
+      <div class="col-start-1 col-end-4 row-start-6 row-end-7 flex">
+        <div class="w-1/3 bg-c-blue-10 flex justify-center items-center">
+          #
+        </div>
+        <div class="w-1/3 bg-c-blue-10 flex justify-center items-center border-l border-c-green-9">
+          Input
+        </div>
+        <div class="w-1/3 bg-c-blue-10 flex justify-center items-center border-l border-c-green-9">
+          Output
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.min.js"></script>
+</body>
+</html>

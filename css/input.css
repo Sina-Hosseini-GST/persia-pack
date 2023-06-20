@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@font-face {
+  font-family: 'b-mitra';
+  src: url(assets/font/BMitra.ttf);
+}
+@font-face {
+  font-family: 'roboto-regular';
+  src: url(assets/font/roboto.regular.ttf);
+}
+@tailwind utilities;
+
+::-webkit-scrollbar{
+  @apply hidden;
+}
